@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+    <title> Pesme </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel='stylesheet' href='/stylesheets/style_admin.css'>
+</head>
+<body>
+<nav class="navbar">
+    <span class="open-slide">
+      <a href="#" onclick="openSlideMenu()">
+        <svg width="30" height="30">
+            <path d="M0,5 30,5" stroke="#fff" stroke-width="5"/>
+            <path d="M0,14 30,14" stroke="#fff" stroke-width="5"/>
+            <path d="M0,23 30,23" stroke="#fff" stroke-width="5"/>
+        </svg>
+      </a>
+    </span>
+    <ul class="navbar-nav">&nbsp;&nbsp;Pesme</ul>
+</nav>
+
+<div id="side-menu" class="side-nav">
+    <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+    <a href="/korisnik_pesme" style="color: white; font-weight: bold; font-size: 20px;"><i class='fas fa-music text-white'></i>&nbsp; Pesme</a>
+    <a href="/korisnik_autori" style="font-size: 20px;"><i class="fas fa-pencil-alt text-white"></i>&nbsp; Autori</a>
+    <a href="/korisnik_zanrovi" style=" font-size: 20px;"><i class="far fa-file-alt text-white"></i>&nbsp; Žanrovi</a>
+    <a href="/korisnik_logout" style="font-size: 20px;"><i class="fas fa-sign-out-alt"></i>&nbsp; Odjavi se</a>
+</div>
+
+<div class="container py-5 my-5">
+
+    <div class="row">
+        <div class="col text-left" style="padding-top: 7px;">
+            <a href="/korisnik_pesme" class="a_button"><i class="fas fa-arrow-left" style="font-size: 28px;"></i></a>
+        </div>
+        <div class="col text-center mr-4 pr-4" style="padding-top: 4px;">
+            <a href="#" class="a_button" style="font-size: 21px;">Rezultati pretrage:</a>
+        </div>
+        <div class="col text-right mr-1 pr-1" style="padding-top: 7px;"></div>
+    </div>
+
+    <div class="row my-3 justify-content-center">
+
+    </div>
+    <div class='table-responsive-sm'>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Naziv</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Žanr</th>
+                <th scope="col">Akcije</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% data.forEach(function(i) { %>
+                <tr>
+                    <td><%= i.naziv%></td>
+                    <td><%= i.autor_ime%></td>
+                    <td><%= i.zanr_naziv%></td>
+                    <td>
+                        <a href="/korisnik_pesma/<%= i.id%>" class="icon-btn text-primary" role="button">&nbsp;&nbsp;&nbsp;<i  class="fas fa-eye"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+            <% }) %>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function auto_grow(element)
+    {
+        element.style.height = "70px";
+        element.style.height = (element.scrollHeight)+"px";
+    }
+
+</script>
+
+<script type="text/javascript" src="javascripts/admin_script.js"></script>
+<script type="text/javascript" src="/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+
+
+</body>
+</html>

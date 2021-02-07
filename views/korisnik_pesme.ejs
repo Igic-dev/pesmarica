@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+    <title> Pesme </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel='stylesheet' href='/stylesheets/style_admin.css'>
+</head>
+<body>
+<nav class="navbar">
+    <span class="open-slide">
+      <a href="#" onclick="openSlideMenu()">
+        <svg width="30" height="30">
+            <path d="M0,5 30,5" stroke="#fff" stroke-width="5"/>
+            <path d="M0,14 30,14" stroke="#fff" stroke-width="5"/>
+            <path d="M0,23 30,23" stroke="#fff" stroke-width="5"/>
+        </svg>
+      </a>
+    </span>
+    <ul class="navbar-nav">&nbsp;&nbsp;Pesme</ul>
+</nav>
+
+<div id="side-menu" class="side-nav">
+    <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+    <a href="/korisnik_pesme" style="color: white; font-weight: bold; font-size: 20px;"><i class='fas fa-music text-white'></i>&nbsp; Pesme</a>
+    <a href="/korisnik_logout" style="font-size: 20px;"><i class="fas fa-sign-out-alt"></i>&nbsp; Odjavi se</a>
+</div>
+
+<div class="container py-5 my-5">
+        <div class="table-responsive">
+            <form name="Pretraga" action="korisnik_pesme_rezultati_pretrage" onsubmit="ValidateForm()" method="POST">
+                <table class="table table-bordered pb-0">
+                    <tbody style="text-align: center;">
+                    <tr>
+                        <td style="vertical-align: middle !important;">
+                            <input type="text" class="search" name="naziv" placeholder="Naziv pesme" style="padding-left: 0; outline: none; border-bottom: 0;">
+                        </td>
+                        <td style="vertical-align: middle !important;">
+                            <select name="autor" style="padding-left: 0; outline: 0; border-bottom: 0;" class="search">
+                                <option label="Autor - izaberi iz liste"></option>
+                                <% data_1.forEach(function(i) { %>
+                                    <option value="<%= i.autor_id %>"><%= i.autor_ime %></option>
+                                <% }) %>
+                            </select>
+                        </td>
+                        <td style="vertical-align: middle !important;">
+                            <select name="zanr" style="padding-left: 0; outline: 0; border-bottom: 0;" class="search">
+                                <option label="Žanr - izaberi iz liste"></option>
+                                <% data_2.forEach(function(i) { %>
+                                    <option value="<%= i.zanr_id %>"><%= i.zanr_naziv %></option>
+                                <% }) %>
+                            </select>
+                        </td>
+                        <td style="text-align: center !important; vertical-align: middle;">
+                            <a href="javascript:$('form').submit();"><i class="fas fa-search search_sbmt_btn"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+
+    <div class='table-responsive-sm'>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Naziv</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Žanr</th>
+                <th scope="col">Akcije</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% data.forEach(function(i) { %>
+                <tr>
+                    <td><%= i.naziv%></td>
+                    <td><%= i.ime_autora%></td>
+                    <td><%= i.naziv_zanra%></td>
+                    <td>
+                        <a href="/korisnik_pesma/<%= i.id%>" class="icon-btn text-primary" role="button">&nbsp;&nbsp;&nbsp;<i  class="fas fa-eye"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+            <% }) %>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function ValidateForm()
+    {
+        var fields = document.getElementsByClassName("search");
+        var ok = false;
+
+        for (var i = 0, l = fields.length; i < l; i++){
+
+            if (fields[i].value != ""){
+                ok = true;
+                break;
+            }
+        }
+
+        if (!ok) {
+            alert("Neophodno je izabrati barem jedno polje za pretragu!");
+            event.preventDefault();
+        }
+    }
+
+</script>
+
+<script type="text/javascript" src="javascripts/admin_script.js"></script>
+<script type="text/javascript" src="/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+</body>
+</html>

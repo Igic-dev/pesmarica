@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Korisnik - Registracija</title>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel='stylesheet' href='/stylesheets/style_log_reg.css'>
+  <link rel='stylesheet' href='/stylesheets/style_log_reg_2.css'>
+</head>
+<body>
+
+<div class="container my-5 py-5">
+  <div class="formholder">
+    <div class="titleHolder">
+      <h1>Korisnik - Registracija</h1>
+    </div>
+    <form action="/korisnik_registracija" method="POST" class="registerForm">
+      <div class="row">
+        <input type="text" placeholder="Ime i prezime" name="ime_prezime" required>
+        <i class="fas fa-user"></i>
+      </div>
+      <div class="row">
+        <input type="text" placeholder="Korisničko ime" name="korisnicko_ime" required>
+        <i class="fas fa-user-circle"></i>
+      </div>
+      <div class="row">
+        <input type="email" placeholder="E-mail" name="email" required>
+        <i class="fas fa-envelope"></i>
+      </div>
+      <div class="row">
+        <input type="password" placeholder="Lozinka" name="lozinka" required>
+        <i class="fas fa-key"></i>
+      </div>
+      <div class="row">
+        <button type="submit" class="btn">Registruj se</button>
+      </div>
+      <div class="row justify-content-center">
+        <p>Već imaš nalog?<a href="/" style="font-size: 1.2em;"> Prijavi se</a></p>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script type="text/javascript" src="/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+</body>
+</html>
+
